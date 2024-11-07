@@ -1,0 +1,51 @@
+{
+  "name": "conventional-commits-filter",
+  "type": "module",
+  "version": "5.0.0",
+  "description": "Filter out reverted commits parsed by conventional-commits-parser.",
+  "author": {
+    "name": "Steve Mao",
+    "email": "maochenyan@gmail.com",
+    "url": "https://github.com/stevemao"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/nholuongut/conventional-changelog/tree/master/packages/conventional-commits-filter#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nholuongut/conventional-changelog.git",
+    "directory": "packages/conventional-commits-filter"
+  },
+  "bugs": {
+    "url": "https://github.com/nholuongut/conventional-changelog/issues"
+  },
+  "keywords": [
+    "filter",
+    "conventional",
+    "changelog",
+    "commits"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "exports": "./src/index.ts",
+  "publishConfig": {
+    "exports": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "directory": "package",
+    "linkDirectory": false
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clear:package": "del ./package",
+    "clear:dist": "del ./dist",
+    "clear": "del ./package ./dist",
+    "prepublishOnly": "run build clear:package clean-publish",
+    "postpublish": "pnpm clear:package",
+    "build": "tsc",
+    "test:types": "tsc --noEmit"
+  }
+}

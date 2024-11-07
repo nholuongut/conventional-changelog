@@ -1,0 +1,64 @@
+{
+  "name": "conventional-recommended-bump",
+  "type": "module",
+  "version": "10.0.0",
+  "description": "Get a recommended version bump based on conventional commits.",
+  "author": {
+    "name": "Steve Mao",
+    "email": "maochenyan@gmail.com",
+    "url": "https://github.com/stevemao"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/nholuongut/conventional-changelog/tree/master/packages/conventional-recommended-bump#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nholuongut/conventional-changelog.git",
+    "directory": "packages/conventional-recommended-bump"
+  },
+  "bugs": {
+    "url": "https://github.com/nholuongut/conventional-changelog/issues"
+  },
+  "keywords": [
+    "conventional-recommended-bump",
+    "recommend",
+    "conventional",
+    "bump"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "exports": "./src/index.ts",
+  "publishConfig": {
+    "bin": {
+      "conventional-recommended-bump": "./dist/cli/index.js"
+    },
+    "exports": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "directory": "package",
+    "linkDirectory": false
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clear:package": "del ./package",
+    "clear:dist": "del ./dist",
+    "clear": "del ./package ./dist",
+    "prepublishOnly": "run build clear:package clean-publish",
+    "postpublish": "pnpm clear:package",
+    "build": "tsc",
+    "test:types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@conventional-changelog/git-client": "workspace:^",
+    "conventional-changelog-preset-loader": "workspace:^",
+    "conventional-commits-filter": "workspace:^",
+    "conventional-commits-parser": "workspace:^",
+    "meow": "^13.0.0"
+  },
+  "devDependencies": {
+    "conventional-changelog-conventionalcommits": "workspace:^"
+  }
+}

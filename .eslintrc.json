@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "extends": "standard",
+  "env": {
+    "node": true
+  },
+  "overrides": [
+    {
+      "files": [
+        "packages/*/test{,/*}.js"
+      ],
+      "env": {
+        "mocha": true
+      }
+    },
+    {
+      "files": [
+        "tools/**/*.ts",
+        "packages/**/*.ts"
+      ],
+      "extends": [
+        "@trigen/eslint-config",
+        "@trigen/eslint-config/tsm",
+        "@trigen/eslint-config/esm",
+        "@trigen/eslint-config/jest"
+      ],
+      "env": {
+        "node": true
+      }
+    }
+  ],
+  "ignorePatterns": [
+    "packages/*/dist/**/*"
+  ]
+}
